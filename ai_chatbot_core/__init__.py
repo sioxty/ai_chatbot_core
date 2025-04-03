@@ -1,14 +1,20 @@
 """
-:authors: sioxty
-:copyright: Copyright 2023 sioxty
-:license: MIT
+This module provides core functionality for the AI chatbot application.
+
+It includes classes for managing chats and interacting with the AI model.
+
+Authors: sioxty
+Copyright: Copyright 2025 sioxty
+License: MIT
 """
 
-from .chat import Chat
-from .chat_maneger import ManegerChat
 import types
 
-__author__ = 'sioxty'
-__version__ = '0.1.1'
-__license__ = 'MIT'
-__email__ = 'maksymslushayev@gmail.com'
+from .chat import Chat
+from .chat_maneger import ChatManager
+
+
+__author__ = "sioxty"
+__version__ = "0.1.1"
+__license__ = "MIT"
+__email__ = "maksymslushayev@gmail.com"
