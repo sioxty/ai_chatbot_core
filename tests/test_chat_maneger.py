@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import AsyncMock, patch
 
 from ai_chatbot_core.chat import Chat
-from ai_chatbot_core.chat_maneger import ChatManager
+from ai_chatbot_core.chat_maneger import ChatManager 
 from ai_chatbot_core.types import Model
 
 

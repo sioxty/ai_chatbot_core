@@ -1,13 +1,15 @@
 from .chat import Chat
 from .types import Model
 
-class ManegerChat:
+class ChatManager:
     """
     Manages multiple chat instances for different users.
 
     This class handles the creation, retrieval, addition, and removal of chat instances.
     It also manages the API key, default model, and start message for all chats.
     """
+    
+    
     def __init__(self, api_key: str, model: Model = Model.DEEPSEEK_R1, start_message: str = None):
         """
         Initializes the ManegerChat with an API key, default model, and start message.

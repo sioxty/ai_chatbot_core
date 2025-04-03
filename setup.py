@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="ai_chatbot_core",  # Library name                                  
-    version= "0.1.2",  # Version
+    version= "0.2.0",  # Version
     
     install_requires=[
         "aiohttp"
