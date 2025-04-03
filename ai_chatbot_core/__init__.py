@@ -15,6 +15,6 @@ from .chat_maneger import ChatManager
 
 
 __author__ = "sioxty"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __license__ = "MIT"
 __email__ = "maksymslushayev@gmail.com"
