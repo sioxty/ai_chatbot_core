@@ -11,7 +11,13 @@ AgentAI is a project that aims to create intelligent agents capable of performin
 
 ## Getting Started
 
-### Prerequisites
+### Prerequisites*   Python packages:
+    ```bash
+    pip install -r requirements.txt
+   :
+
+```
+*   Git
 
 *   Python 3.x
 *   [List any other dependencies here]
