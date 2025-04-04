@@ -129,7 +129,7 @@ class Chat:
                 logger.error(f"Aiohttp client error: {error}")
                 return "An error occurred while processing your request."
 
-    async def _process_response(self, response: aiohttp.ClientResponse) -> str:
+    async def _process_response(self, response: aiohttp.ClientResponse,history: bool = True) -> str:
         """
         Processes the response from the AI API.
 
@@ -139,6 +139,8 @@ class Chat:
 
         Args:
             response (aiohttp.ClientResponse): The response from the AI API.
+            history (bool, optional): Whether to add the AI's message to the chat history.
+                Defaults to True.
 
         Returns:
             str: The processed content of the AI's message.
@@ -146,7 +148,8 @@ class Chat:
         content: dict = await response.json()
         ai_message: dict = content["choices"][0]["message"]
         ai_content: str = remove_think_content(ai_message["content"])
-        await self.add_message(ai_message["role"], ai_content)
+        if history:
+            await self.add_message(ai_message["role"], ai_content)
         return ai_content
 
     async def clear_chat(self) -> None:
