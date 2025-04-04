@@ -35,6 +35,7 @@ class Chat:
         user_id: int = 1,
         start_message: str = None,
         model: Model = Model.DEEPSEEK_R1,
+        history: bool = True,
     ):
         """
         Initializes a new chat session.
@@ -46,10 +47,13 @@ class Chat:
                 Defaults to None.
             model (Model, optional): The AI model to use.
                 Defaults to Model.DEEPSEEK_R1.
+            history (bool, optional): Whether to store the chat history.
+                Defaults to True.
         """
         self.api_key: str = api_key
         self.user_id: int = user_id
         self.model: Model = model
+        self.__history: bool = history
         self.messages: list[Message] = [StartMessage(start_message)]
 
     async def add_message(self, role: str, content: str):
@@ -129,7 +133,7 @@ class Chat:
                 logger.error(f"Aiohttp client error: {error}")
                 return "An error occurred while processing your request."
 
-    async def _process_response(self, response: aiohttp.ClientResponse,history: bool = True) -> str:
+    async def _process_response(self, response: aiohttp.ClientResponse) -> str:
         """
         Processes the response from the AI API.
 
@@ -139,8 +143,6 @@ class Chat:
 
         Args:
             response (aiohttp.ClientResponse): The response from the AI API.
-            history (bool, optional): Whether to add the AI's message to the chat history.
-                Defaults to True.
 
         Returns:
             str: The processed content of the AI's message.
@@ -148,7 +150,7 @@ class Chat:
         content: dict = await response.json()
         ai_message: dict = content["choices"][0]["message"]
         ai_content: str = remove_think_content(ai_message["content"])
-        if history:
+        if self.__history:
             await self.add_message(ai_message["role"], ai_content)
         return ai_content
 
