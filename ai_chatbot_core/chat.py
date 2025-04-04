@@ -50,8 +50,8 @@ class Chat:
             history (bool, optional): Whether to store the chat history.
                 Defaults to True.
         """
-        self.api_key: str = api_key
-        self.user_id: int = user_id
+        self.api_key: str = str(api_key)
+        self.user_id: int = int(user_id)
         self.model: Model = model
         self.__history: bool = history
         self.messages: list[Message] = [StartMessage(start_message)]
@@ -109,7 +109,7 @@ class Chat:
             str: The AI's response or an error message.
         """
         api_url = "https://api.intelligence.io.solutions/api/v1/chat/completions"
-        await self.add_message("user", content)
+        await self.add_message("user", str(content))
 
         headers: dict[str, str] = {
             "Content-Type": "application/json",

@@ -19,10 +19,10 @@ class ChatManager:
             model (Model, optional): The default model to use for new chats. Defaults to Model.DEEPSEEK_R1.
             start_message (str, optional): The default start message for new chats. Defaults to "You are a helpful assistant.".
         """
-        self.api_key: str = api_key
+        self.__api_key: str = api_key
         self.chats: dict[int, Chat] = {}
         self.model: Model = model
-        self.start_message: str = "You are a helpful assistant." if start_message is None else start_message
+        self.__start_message: str = "You are a helpful assistant." if start_message is None else start_message
     
     async def __create_chat(self, user_id: int) -> Chat:
         """
@@ -35,9 +35,9 @@ class ChatManager:
             Chat: The newly created chat instance.
         """
         chat = Chat(
-            api_key=self.api_key,
+            api_key=self.__api_key,
             user_id=user_id,
-            start_message=self.start_message,
+            start_message=self.__start_message,
             model=self.model
         )
         await self.add_chat(chat) 

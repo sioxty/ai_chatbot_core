@@ -1,11 +1,12 @@
-from setuptools import setup, find_packages
+from setuptools import setup
+import ai_chatbot_core
 
-with open("README.md", "r") as f:
+with open("README.md", "r",encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name="ai_chatbot_core",  # Library name                                  
-    version= "0.2.0",  # Version
+    version= ai_chatbot_core.__version__,  # Version
     
     install_requires=[
         "aiohttp"
