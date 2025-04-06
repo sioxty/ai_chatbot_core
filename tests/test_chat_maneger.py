@@ -2,7 +2,7 @@ import asyncio
 import unittest
 from unittest.mock import AsyncMock, patch
 
-from ai_chatbot_core.chat import Chat
+from ai_chatbot_core.chat import Chat, StartMessage
 from ai_chatbot_core.chat_maneger import ChatManager 
 from ai_chatbot_core.types import Model
 
@@ -17,6 +17,7 @@ class TestChatManager(unittest.IsolatedAsyncioTestCase):
     async def test_create_chat(self):
         user_id = 1
         chat = await self.manager._ChatManager__create_chat(user_id)
+        
         self.assertIsInstance(chat, Chat)
         self.assertEqual(chat.user_id, user_id)
         self.assertEqual(chat.api_key, self.api_key)
@@ -66,7 +67,7 @@ class TestChatManager(unittest.IsolatedAsyncioTestCase):
         manager = ChatManager(self.api_key)
         user_id = 8
         chat = await manager._ChatManager__create_chat(user_id)
-        self.assertEqual(chat.messages[0].content, "You are a helpful assistant.")
+        self.assertEqual(chat.messages[0].content, StartMessage().content)
 
     async def test_default_model(self):
         manager = ChatManager(self.api_key)

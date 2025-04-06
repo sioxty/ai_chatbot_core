@@ -9,7 +9,6 @@ License: MIT
 """
 
 import types
-import config
 
 from .chat import Chat
 from .chat_maneger import ChatManager
