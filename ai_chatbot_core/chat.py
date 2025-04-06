@@ -2,6 +2,7 @@ import aiohttp
 import re
 import logging
 
+from .config import api_url
 from .types import Message, StartMessage, Model
 
 
@@ -53,7 +54,7 @@ class Chat:
         self.api_key: str = str(api_key)
         self.user_id: int = int(user_id)
         self.model: Model = model
-        self.__history: bool = history
+        self.__history: bool = bool(history)
         self.messages: list[Message] = [StartMessage(start_message)]
 
     async def add_message(self, role: str, content: str):
@@ -108,7 +109,6 @@ class Chat:
         Returns:
             str: The AI's response or an error message.
         """
-        api_url = "https://api.intelligence.io.solutions/api/v1/chat/completions"
         await self.add_message("user", str(content))
 
         headers: dict[str, str] = {

@@ -9,10 +9,10 @@ License: MIT
 """
 
 import types
+import config
 
 from .chat import Chat
 from .chat_maneger import ChatManager
-
 
 __author__ = "sioxty"
 __version__ = "0.2.1"
