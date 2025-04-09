@@ -76,6 +76,10 @@ async def main():
     # Get the chat instance
     chat = await manager.get_chat(user_id)
     print(f"Chat for user {user_id}: {chat}")
+    # Get response 
+    response = await chat.response('Hi chat')
+    print(response)
+
 
     # Remove the chat session
     await manager.remove_chat(user_id)
