@@ -1,0 +1,1 @@
+api_url='"https://api.intelligence.io.solutions/api/v1/chat/completions"'

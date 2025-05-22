@@ -80,7 +80,7 @@ class Message:
             role (str, optional): The role of the message sender.
                 Defaults to "user".
         """
-        self.role = role
+        self.role = str(role)
         self.content = content
 
     def get_content(self) -> dict:
